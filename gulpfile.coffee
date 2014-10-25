@@ -6,9 +6,6 @@ gulp_coffeeify = require 'gulp-coffeeify'
 path = require 'path'
 tiny_lr = require 'tiny-lr'
 
-
-
-
 EXPRESS_PORT = 1337
 EXPRESS_ROOT = './public/'
 LIVERELOAD_PORT = 35729

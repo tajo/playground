@@ -12,4 +12,9 @@ Look no more further!
 - `git clone https://github.com/tajo/playground.git`
 - `npm install`
 - `gulp`
-- and start hacking in `/src/index.coffee` ... !
+- and start hacking in `/src/*.coffee` ... !
+
+Features
+-------
+- Gulp starts the server `http://localhost:1337` and opens your default broswer.
+- Automatic reloads with a saved change in `*.coffee` files.
