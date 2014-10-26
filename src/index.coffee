@@ -1,4 +1,4 @@
-b = require 'browser-playground' #some handy output functions
+b = require 'playground-browser' #some handy output functions
 Example = require './example' #just an example
 
 b.h1 'Playground'
