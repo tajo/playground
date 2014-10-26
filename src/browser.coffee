@@ -1,4 +1,4 @@
-module.exports.escapeHtml = (html) ->
+module.exports.escapeHtml = (html = '') ->
 	map =
     '&': '&amp;',
     '<': '&lt;',
@@ -7,6 +7,82 @@ module.exports.escapeHtml = (html) ->
     "'": '&#039;'
   html.replace /[&<>"']/g, (m) ->
   		map[m]
+
+module.exports.getParameters = () ->
+	query = window.location.search.substring 1
+	vars = query.split "&"
+
+	result = {}
+	for i in [0..vars.length-1]
+		pair = vars[i].split '='
+
+		result[pair[0]] = pair[1]
+
+	result
+
+module.exports.dumpObject = (object) ->
+	renderObject = (object) ->
+		container = document.createElement 'dl'
+
+		if typeof object is 'number' or typeof object is 'string'
+			dt = document.createElement 'dt'
+			dt.innerHTML = String object
+			container.appendChild dt
+		else
+			for key, value of object
+				dt = document.createElement 'dt'
+				dt.innerHTML = key
+				dd = document.createElement 'dd'
+
+				if Array.isArray value
+					for item in value
+						dd.appendChild renderObject item
+				else if typeof value is 'object'
+					dd.appendChild renderObject(value)
+				else
+					dd.innerHTML = String value
+
+				container.appendChild dt
+				container.appendChild dd
+
+		container
+
+	div = document.createElement 'div'
+	div.className = 'dump-container'
+	definitions = renderObject object
+	div.appendChild definitions
+	document.body.appendChild div
+
+module.exports.space = () ->
+	div = document.createElement 'div'
+	div.style.height = '30px'
+	document.body.appendChild div
+
+module.exports.input = (title, onsubmit, helpText = '') ->
+	throw new Error 'onSubmit is not a function' unless typeof onsubmit is 'function'
+
+	div = document.createElement 'div'
+	div.className = 'help-container'
+	input = document.createElement 'input'
+	input.style['width'] = '30%'
+	input.style['padding'] = '5px'
+	input.style['margin-right'] = '20px'
+	input.setAttribute 'type', 'text'
+	input.setAttribute 'placeholder', title
+
+	button = document.createElement 'button'
+	button.addEventListener 'click', (e) ->
+		onsubmit input.value
+	button.innerHTML = 'Submit'
+
+	help = document.createElement 'span'
+	help.className = 'help-text'
+	help.innerHTML = module.exports.escapeHtml helpText
+
+	div.appendChild input
+	div.appendChild button
+	div.appendChild help
+	document.body.appendChild div
 
 module.exports.immafakinhacka = () ->
 	document.body.style.color = '#0f0'
