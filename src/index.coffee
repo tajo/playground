@@ -57,6 +57,15 @@ b.h2 'class browser.progress (max, color, description)'
 b.h3 '#update (value)'
 b.h3 '#getValue ()'
 
+b.h3 '#md (value)'
+b.print 'Parses markdown syntax and prints the output'
+
+b.h3 '#linechart (Object)'
+b.print 'Prints the Chartjs linechart, see <a href="http://www.chartjs.org/docs/#line-chart">documentation</a>', false
+
+b.h3 '#barchart (Object)'
+b.print 'Prints the Chartjs barchart, see <a href="http://www.chartjs.org/docs/#bar-chart">documentation</a>', false
+
 do b.space
 
 b.h2 'Examples'
@@ -149,7 +158,7 @@ b.dumpObject
 b.h3 'Markdown'
 b.md 'Markdown **awesome** `syntax`'
 
-b.h3 'Chartjs.org'
+b.h3 'b.barchart'
 b.barchart {
 	labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July']
 	datasets: [
