@@ -10,6 +10,7 @@ Look no more further!
 
 
 - `git clone https://github.com/tajo/playground.git`
+- `cd playground`
 - `npm install`
 - `npm install -g bower`
 - `bower install`
