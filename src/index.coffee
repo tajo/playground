@@ -79,30 +79,27 @@ b.table [
 ]
 
 b.code "b.table [\n
-  \t['January', 'February', 'March']\n
-  \t['April', 'May', 'June']\n
-  \t['July', 'August', 'September']\n
-  \t['October', 'November', 'December']\n
+	\t['January', 'February', 'March']\n
+	\t['April', 'May', 'June']\n
+	\t['July', 'August', 'September']\n
+	\t['October', 'November', 'December']\n
 ]\n
 "
 
 b.h3 'Inputs'
 b.input 'What does the fox say?', ((what)->
-  alert what), 'Insert, what does the fox say'
+	alert what), 'Insert, what does the fox say'
 b.input 'Name', ((what)->
-  alert what), 'Insert your name'
+	alert what), 'Insert your name'
 
 b.h3 'Buttons'
 b.button 'Knock, knock', (() ->
-  alert 'Who is there?')
-  ,'This is sample button with funny onClick action'
+	alert 'Who is there?')
+	,'This is sample button with funny onClick action'
 
 b.button 'What does the fox say?', (() ->
-  alert 'Hati hati hati ho!')
-  ,'Click the button a reveal, what does the fox say'
-
-b.button 'Who\'s da hacka?', () ->
-  do b.immafakinhacka
+	alert 'Hati hati hati ho!')
+	,'Click the button a reveal, what does the fox say'
 
 b.h3 'Unordered list'
 b.list ['January', 'February', 'March']
@@ -112,66 +109,65 @@ max = 100
 progress = new b.progress max
 progress2 = new b.progress max, '#f00', 'men down'
 (someHeavyTask = (i) ->
-   setTimeout ->
-      progress.update max-i
-      progress2.update i
-      someHeavyTask i if --i+1
-   , 300
+	setTimeout ->
+		progress.update max-i
+		progress2.update i
+		someHeavyTask i if --i+1
+	, 300
 ) max
 
 b.image 'http://quicklol.com/wp-content/uploads/2012/03/omg-bacon-funny-cat.jpg'
 
 b.h3 'Files'
 b.file (files) ->
-    b.h2 'Files were loaded!'
+	b.h2 'Files were loaded!'
 
-    fileNames = []
-    for i in [0..files.length]
-      fileNames.push files[i].name if files[i]?
+	fileNames = []
+	for i in [0..files.length]
+		fileNames.push files[i].name if files[i]?
 
-    b.list fileNames
+	b.list fileNames
 
 b.h3 'Parameters'
 b.code JSON.stringify b.getParameters()
 
 b.h3 'Dump object'
 b.dumpObject
-  hello:
-    world: 1
-    help:
-      me: 2
-      what: 'is happening'
-  awesome:
-    yes: 'it is'
-    no: false
-    array: [ 'a', 'b', (
-        abc: 'd'
-        g: 'b'
-      ) ]
+	hello:
+		world: 1
+		help:
+			me: 2
+			what: 'is happening'
+	awesome:
+		yes: 'it is'
+		no: false
+		array: [ 'a', 'b', (
+			abc: 'd'
+			g: 'b'
+		) ]
 
 b.h3 'Markdown'
 b.md 'Markdown **awesome** `syntax`'
 
-
 b.h3 'Chartjs.org'
 b.barchart {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July']
-  datasets: [
-    {
-      label: "My First dataset"
-      fillColor: "rgba(220,220,220,0.5)"
-      strokeColor: "rgba(220,220,220,0.8)"
-      highlightFill: "rgba(220,220,220,0.75)"
-      highlightStroke: "rgba(220,220,220,1)"
-      data: [65, 59, 80, 81, 56, 55, 40]
-    },
-    {
-      label: "My Second dataset"
-      fillColor: "rgba(151,187,205,0.5)"
-      strokeColor: "rgba(151,187,205,0.8)"
-      highlightFill: "rgba(151,187,205,0.75)"
-      highlightStroke: "rgba(151,187,205,1)"
-      data: [28, 48, 40, 19, 86, 27, 90]
-    }
-  ]
+	labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July']
+	datasets: [
+		{
+			label: "My First dataset"
+			fillColor: "rgba(220,220,220,0.5)"
+			strokeColor: "rgba(220,220,220,0.8)"
+			highlightFill: "rgba(220,220,220,0.75)"
+			highlightStroke: "rgba(220,220,220,1)"
+			data: [65, 59, 80, 81, 56, 55, 40]
+		},
+		{
+			label: "My Second dataset"
+			fillColor: "rgba(151,187,205,0.5)"
+			strokeColor: "rgba(151,187,205,0.8)"
+			highlightFill: "rgba(151,187,205,0.75)"
+			highlightStroke: "rgba(151,187,205,1)"
+			data: [28, 48, 40, 19, 86, 27, 90]
+		}
+	]
 }
