@@ -1,7 +1,9 @@
 connect_livereload = require 'connect-livereload'
 express = require 'express'
 gulp = require 'gulp'
+gulp_concat = require 'gulp-concat-util'
 gulp_open = require 'gulp-open'
+gulp_rename = require 'gulp-rename'
 gulp_coffeeify = require 'gulp-coffeeify'
 path = require 'path'
 tiny_lr = require 'tiny-lr'
@@ -10,7 +12,7 @@ EXPRESS_PORT = 1337
 EXPRESS_ROOT = './public/'
 LIVERELOAD_PORT = 35729
 
-gulp.task 'default', ['watchCoffee','server'], ->
+gulp.task 'default', ['watchCoffee','bower','server'], ->
 	options =
 		url: 'http://localhost:' + EXPRESS_PORT
 
@@ -27,6 +29,11 @@ gulp.task 'coffee2app', ->
 		.pipe(gulp_coffeeify())
 		.pipe(gulp.dest('./public/src_js'))
 
+gulp.task 'bower', ->
+	gulp.src('./bower_components/chartjs/Chart.min.js')
+		#.pipe(gulp_concat('./another/script'))
+		.pipe(gulp_rename('bower_deps.js'))
+		.pipe(gulp.dest('./public/src_js'))
 
 gulp.task 'server', ['coffee2app'], ->
 	app = express()
@@ -41,6 +48,7 @@ gulp.task 'server', ['coffee2app'], ->
 		lr.changed
 			body:
 				files: [fileName]
+
 
 
 

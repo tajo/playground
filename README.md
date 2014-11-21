@@ -11,6 +11,8 @@ Look no more further!
 
 - `git clone https://github.com/tajo/playground.git`
 - `npm install`
+- `npm install -g bower`
+- `bower install`
 - `gulp`
 - and start hacking in `/src/*.coffee` ... !
 

@@ -3,14 +3,16 @@
   "version": "1.0.0",
   "description": "For some fast hacking in your beloved Coffee Script",
   "dependencies": {
-    "playground-browser": "0.0.x",
     "coffee-script": "^1.8.0",
     "connect-livereload": "^0.5.0",
     "express": "^4.10.0",
     "gulp": "^3.8.9",
     "gulp-coffee": "^2.2.0",
     "gulp-coffeeify": "^0.1.2",
+    "gulp-concat-util": "^0.5.1",
     "gulp-open": "^0.3.0",
+    "gulp-rename": "^1.2.0",
+    "playground-browser": "0.0.x",
     "tiny-lr": "^0.1.4"
   },
   "author": {
